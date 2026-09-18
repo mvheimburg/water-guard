@@ -1,3 +1,5 @@
+<img src="custom_components/water_guard/brand/icon.png" alt="" width="96" align="right">
+
 # Water Guard
 
 A Home Assistant integration that raises a leak alert, gets it to the right
