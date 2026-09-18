@@ -288,7 +288,11 @@ class Guard:
 
     @property
     def attributes(self):
+        # The configured lists let a card show valves and people before any leak.
         return {
+            "leak_sensors": list(self.sensors),
+            "valves": list(self.valves),
+            "people": list(self.people),
             "since": (self.leak or {}).get("since"),
             "sensors": (self.leak or {}).get("sensors", []),
             "notified": (self.leak or {}).get("notified", {}),

@@ -43,7 +43,8 @@ Changes are saved when you submit, and saving never opens or closes a valve.
 5. Another sensor reporting later updates the alert and replaces the push on the
    phone; the same sensor again does not alert twice.
 
-The Leak sensor's attributes show `since`, the `sensors` that fired, who was
+The Leak sensor's attributes list what is guarded — `leak_sensors`, `valves`
+and `people` (from 0.2.0) — and, for an alert, `since`, the `sensors` that fired, who was
 `notified` (`sent`, `failed`, or `no_app` for a person without the app),
 `wet_sensors` right now, `unavailable_sensors`, and the `last_result` of moving
 the valves. The alert survives restarts.
@@ -80,7 +81,8 @@ valve closed remains the thing that holds the water off.
 ## Dashboard card
 
 [Water Guard card](https://github.com/mvheimburg/lovelace-water-guard) shows
-the alert and offers the override.
+the alert and offers the override. Card 0.1.0 needs Water Guard 0.2.0 or later
+to list valves and people before a leak.
 
 ## Development and release
 

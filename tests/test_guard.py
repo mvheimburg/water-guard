@@ -190,3 +190,12 @@ async def test_unavailable_sensors_are_visible(hass, entry):
     await setup(hass, entry)
     assert leak(hass).attributes["unavailable_sensors"] == ["binary_sensor.boiler_leak"]
     assert leak(hass).state == "off"
+
+
+async def test_attributes_list_what_is_guarded_before_any_leak(hass, entry):
+    await setup(hass, entry)
+    attributes = leak(hass).attributes
+    assert attributes["leak_sensors"] == ["binary_sensor.sink_leak", "binary_sensor.boiler_leak"]
+    assert attributes["valves"] == ["valve.main"]
+    assert attributes["people"] == ["person.kari", "person.ola"]
+    assert attributes["sensors"] == [] and attributes["since"] is None
