@@ -16,8 +16,9 @@ def schema(values, name=None):
     fields = {}
     if name is not None:
         fields[vol.Required("name", default=name)] = selector.TextSelector()
+    # Any binary sensor: many leak sensors (KNX among them) carry no moisture class.
     fields[vol.Required(CONF_LEAK_SENSORS, default=values.get(CONF_LEAK_SENSORS, []))] = entities(
-        domain="binary_sensor", device_class="moisture"
+        domain="binary_sensor"
     )
     fields[vol.Optional(CONF_PEOPLE, default=values.get(CONF_PEOPLE, []))] = entities(
         domain="person"

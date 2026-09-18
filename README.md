@@ -22,7 +22,7 @@ Under **Settings → Devices & services → Water Guard → Configure**:
 
 | Setting | Purpose |
 |---|---|
-| Leak sensors | Moisture `binary_sensor`s. Any of them turning on raises the alert. Required. |
+| Leak sensors | `binary_sensor`s, with or without a moisture device class. Any of them turning on raises the alert. Required. |
 | People to alert | `person`s. Each gets a push on every phone that runs the Home Assistant app and tracks them. |
 | Water valves | `valve`s, or `switch`es that drive a valve (on means water flows). Override opens them. Optional. |
 | Shut off the water on a leak | Off by default. Turn on only when nothing else shuts the water. |

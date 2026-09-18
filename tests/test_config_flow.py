@@ -64,3 +64,12 @@ async def test_action_descriptions_load(hass, entry):
     await setup(hass, entry)
     descriptions = await async_get_all_descriptions(hass)
     assert set(descriptions["water_guard"]) == {"override"}
+
+
+def test_leak_sensors_accept_binary_sensors_without_a_moisture_class():
+    from custom_components.water_guard.config_flow import CONF_LEAK_SENSORS, schema
+
+    field = next(key for key in schema({}).schema if key == CONF_LEAK_SENSORS)
+    serialized = str(schema({}).schema[field].serialize())
+    assert "binary_sensor" in serialized
+    assert "device_class" not in serialized and "moisture" not in serialized
