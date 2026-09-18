@@ -1,6 +1,6 @@
 [project]
 name = "water-guard"
-version = "0.2.2"
+version = "0.3.0"
 description = "Leak shut-off with a latched, verified main water valve for Home Assistant"
 readme = "README.md"
 license = { file = "LICENSE" }

@@ -141,7 +141,7 @@ async def test_override_button_without_valves_just_clears_the_alert(hass, entry)
         hass.states.async_set("binary_sensor.sink_leak", "on")
         await hass.async_block_till_done()
         await hass.services.async_call(
-            "button", "press", {"entity_id": "button.water_override_open_water"}, blocking=True
+            "button", "press", {"entity_id": "button.water_override"}, blocking=True
         )
         await hass.async_block_till_done()
     assert leak(hass).state == "off"
@@ -199,3 +199,10 @@ async def test_attributes_list_what_is_guarded_before_any_leak(hass, entry):
     assert attributes["valves"] == ["valve.main"]
     assert attributes["people"] == ["person.kari", "person.ola"]
     assert attributes["sensors"] == [] and attributes["since"] is None
+
+
+async def test_entity_ids_use_english_keys_in_any_language(hass, entry):
+    hass.config.language = "nb"
+    await setup(hass, entry)
+    assert hass.states.get("binary_sensor.water_leak") is not None
+    assert hass.states.get("button.water_override") is not None

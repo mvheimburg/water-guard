@@ -31,6 +31,10 @@ Under **Settings → Devices & services → Water Guard → Configure**:
 
 Changes are saved when you submit, and saving never opens or closes a valve.
 
+Entity IDs are the name you gave plus a fixed English key, whatever Home
+Assistant's language: a guard named `Hytta` has `binary_sensor.hytta_leak` and
+`button.hytta_override` (from 0.3.0). Existing entity IDs are kept.
+
 ## What happens on a leak
 
 1. A leak sensor turns on — or is already on when Home Assistant starts.
