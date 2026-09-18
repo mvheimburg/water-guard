@@ -1,0 +1,81 @@
+{
+  "title": "Water Guard",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Water Guard",
+        "description": "Choose the leak sensors to watch and who gets an alert on their phone. A leak raises an alert that stays until someone uses Override.",
+        "data": {
+          "name": "Name",
+          "leak_sensors": "Leak sensors",
+          "people": "People to alert",
+          "valves": "Water valves",
+          "close_on_leak": "Shut off the water on a leak"
+        },
+        "data_description": {
+          "leak_sensors": "A leak on any of these raises the alert.",
+          "people": "Each person gets a push on every phone with the Home Assistant app that tracks them.",
+          "valves": "Valves (or switches that drive a valve) that Override opens. Optional.",
+          "close_on_leak": "Leave off when something else already shuts the water, such as a KNX leak block."
+        }
+      }
+    },
+    "error": {
+      "no_sensors": "Choose at least one leak sensor.",
+      "not_a_sensor": "Leak sensors must be binary sensors.",
+      "not_a_person": "Choose people from Home Assistant's people list.",
+      "not_a_valve": "Only valve and switch entities can be water valves.",
+      "close_without_valves": "Choose the water valves to shut off."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Water Guard settings",
+        "description": "Changes are saved when you submit. Close this dialog to keep the current settings. Saving does not open or close any valve.",
+        "data": {
+          "leak_sensors": "Leak sensors",
+          "people": "People to alert",
+          "valves": "Water valves",
+          "close_on_leak": "Shut off the water on a leak"
+        },
+        "data_description": {
+          "leak_sensors": "A leak on any of these raises the alert.",
+          "people": "Each person gets a push on every phone with the Home Assistant app that tracks them.",
+          "valves": "Valves (or switches that drive a valve) that Override opens. Optional.",
+          "close_on_leak": "Leave off when something else already shuts the water, such as a KNX leak block."
+        }
+      }
+    },
+    "error": {
+      "no_sensors": "Choose at least one leak sensor.",
+      "not_a_sensor": "Leak sensors must be binary sensors.",
+      "not_a_person": "Choose people from Home Assistant's people list.",
+      "not_a_valve": "Only valve and switch entities can be water valves.",
+      "close_without_valves": "Choose the water valves to shut off."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "leak": {
+        "name": "Leak"
+      }
+    },
+    "button": {
+      "override": {
+        "name": "Override: open water"
+      }
+    }
+  },
+  "exceptions": {
+    "valves_failed": {
+      "message": "Not every water valve opened: {valves}. The leak alert stays active."
+    }
+  },
+  "services": {
+    "override": {
+      "name": "Override: open water",
+      "description": "Force the water open and clear the leak alert, even while a sensor still reports a leak. Opens the configured valves and waits for each to confirm."
+    }
+  }
+}

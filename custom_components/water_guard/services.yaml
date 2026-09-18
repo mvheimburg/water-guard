@@ -1,0 +1,5 @@
+override:
+  target:
+    entity:
+      integration: water_guard
+      domain: binary_sensor

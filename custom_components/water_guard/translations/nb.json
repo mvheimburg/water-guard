@@ -1,0 +1,81 @@
+{
+  "title": "Water Guard",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Vannvakt",
+        "description": "Velg lekkasjesensorene som skal overvåkes, og hvem som får varsel på telefonen. En lekkasje gir et varsel som står til noen bruker Overstyr.",
+        "data": {
+          "name": "Navn",
+          "leak_sensors": "Lekkasjesensorer",
+          "people": "Personer som varsles",
+          "valves": "Vannventiler",
+          "close_on_leak": "Steng vannet ved lekkasje"
+        },
+        "data_description": {
+          "leak_sensors": "En lekkasje på en av disse utløser varselet.",
+          "people": "Hver person får et varsel på alle telefoner med Home Assistant-appen som sporer dem.",
+          "valves": "Ventiler (eller brytere som styrer en ventil) som Overstyr åpner. Valgfritt.",
+          "close_on_leak": "La stå av når noe annet allerede stenger vannet, for eksempel en KNX-lekkasjesperre."
+        }
+      }
+    },
+    "error": {
+      "no_sensors": "Velg minst én lekkasjesensor.",
+      "not_a_sensor": "Lekkasjesensorer må være binære sensorer.",
+      "not_a_person": "Velg personer fra personlisten i Home Assistant.",
+      "not_a_valve": "Bare ventil- og bryterentiteter kan være vannventiler.",
+      "close_without_valves": "Velg vannventilene som skal stenges."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Innstillinger for Vannvakt",
+        "description": "Endringene lagres når du sender inn. Lukk dialogen for å beholde gjeldende innstillinger. Lagring åpner eller stenger ingen ventiler.",
+        "data": {
+          "leak_sensors": "Lekkasjesensorer",
+          "people": "Personer som varsles",
+          "valves": "Vannventiler",
+          "close_on_leak": "Steng vannet ved lekkasje"
+        },
+        "data_description": {
+          "leak_sensors": "En lekkasje på en av disse utløser varselet.",
+          "people": "Hver person får et varsel på alle telefoner med Home Assistant-appen som sporer dem.",
+          "valves": "Ventiler (eller brytere som styrer en ventil) som Overstyr åpner. Valgfritt.",
+          "close_on_leak": "La stå av når noe annet allerede stenger vannet, for eksempel en KNX-lekkasjesperre."
+        }
+      }
+    },
+    "error": {
+      "no_sensors": "Velg minst én lekkasjesensor.",
+      "not_a_sensor": "Lekkasjesensorer må være binære sensorer.",
+      "not_a_person": "Velg personer fra personlisten i Home Assistant.",
+      "not_a_valve": "Bare ventil- og bryterentiteter kan være vannventiler.",
+      "close_without_valves": "Velg vannventilene som skal stenges."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "leak": {
+        "name": "Lekkasje"
+      }
+    },
+    "button": {
+      "override": {
+        "name": "Overstyr: åpne vannet"
+      }
+    }
+  },
+  "exceptions": {
+    "valves_failed": {
+      "message": "Ikke alle vannventiler åpnet: {valves}. Lekkasjevarselet står fortsatt."
+    }
+  },
+  "services": {
+    "override": {
+      "name": "Overstyr: åpne vannet",
+      "description": "Tving vannet på og fjern lekkasjevarselet, også mens en sensor fortsatt melder lekkasje. Åpner de valgte ventilene og venter på at hver bekrefter."
+    }
+  }
+}
